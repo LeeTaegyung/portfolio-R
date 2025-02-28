@@ -1,0 +1,154 @@
+@use "variables" as *;
+
+#wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+#header {
+    position: sticky;
+    top: 0;
+    flex: 0;
+    color: #fff;
+    background: $color-point;
+    z-index: 999;
+
+    .logo {
+        display: flex;
+        align-items: center;
+        max-width: $max-width;
+        margin: 0 auto;
+        padding: 0 20px;
+
+        .word {
+            position: relative;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+            padding: 5px 0;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1;
+
+            transform: skewX(-20deg);
+
+            &__top {
+                display: flex;
+                align-items: baseline;
+            }
+
+            &__in {
+                display: block;
+                position: relative;
+                transform: translateY(-2px);
+
+                &::before {
+                    position: absolute;
+                    top: -1px;
+                    left: 0;
+                    right: 0;
+                    height: 1px;
+                    background: $color-white;
+                    content: "";
+                }
+                &::after {
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    right: 0;
+                    height: 1px;
+                    background: $color-white;
+                    content: "";
+                }
+            }
+
+            &__bottom {
+                // position: absolute;
+                // top: 100%;
+                // right: 0;
+                font-weight: 500;
+            }
+        }
+
+        .letter {
+            text-transform: uppercase;
+            &.first {
+                font-size: 2.1em;
+                letter-spacing: -0.1em;
+            }
+        }
+    }
+}
+
+#container {
+    flex: 1;
+    max-width: $max-width;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#footer {
+    border-top: 1px solid;
+    padding: 5px 0;
+    text-align: center;
+    font-size: 12px;
+    flex: 0;
+}
+
+.main {
+    display: flex;
+    $gap: 20px;
+
+    .about {
+        width: 300px;
+        padding: $gap;
+        border-right: 1px solid $color-black;
+        flex: 0 0 auto;
+
+        section {
+            margin-bottom: $gap;
+        }
+
+        &__title {
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-style: italic;
+            background: rgba($color-point, 0.5);
+        }
+
+        .profile {
+            &__cont {
+                dl {
+                    display: flex;
+                    font-size: 13px;
+
+                    dt {
+                        width: 50px;
+                    }
+                }
+            }
+        }
+    }
+
+    .portfolio {
+        flex: 1;
+        padding: $gap;
+    }
+}
+
+.section {
+    padding: 50px 0;
+
+    &__title {
+        margin-bottom: 20px;
+        border-bottom: 2px solid $color-black;
+        font-size: 26px;
+        font-weight: 700;
+        font-style: italic;
+        text-transform: uppercase;
+    }
+}

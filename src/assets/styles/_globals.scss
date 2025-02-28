@@ -1,0 +1,104 @@
+@use "variables" as *;
+// @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap");
+
+// fonts
+@font-face {
+    font-family: "SCDream";
+    src: url("../fonts/SCDream1.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: "SCDream";
+    src: url("../fonts/SCDream2.woff") format("woff");
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: "SCDream";
+    src: url("../fonts/SCDream3.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "SCDream";
+    src: url("../fonts/SCDream4.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "SCDream";
+    src: url("../fonts/SCDream5.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: "SCDream";
+    src: url("../fonts/SCDream6.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: "SCDream";
+    src: url("../fonts/SCDream7.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: "SCDream";
+    src: url("../fonts/SCDream8.woff") format("woff");
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: "SCDream";
+    src: url("../fonts/SCDream9.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+}
+
+// reset
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    box-sizing: border-box;
+    word-break: keep-all;
+    outline: none;
+}
+
+html,
+body {
+    font-family: "SCDream", "IBM Plex Sans KR", serif;
+    color: $color-black;
+    background-color: $color-bg;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: 0;
+    background-color: inherit;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input,
+select,
+textarea {
+    border: 1px solid #dbdbdb;
+    box-shadow: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}

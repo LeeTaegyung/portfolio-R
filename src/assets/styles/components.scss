@@ -1,0 +1,100 @@
+@use "variables" as *;
+
+.markText {
+    position: relative;
+
+    span {
+        position: relative;
+        z-index: 1;
+    }
+
+    &::after {
+        position: absolute;
+        left: -2px;
+        right: -2px;
+        top: 60%;
+        bottom: 0;
+        background: rgba($color-point, 0.5);
+        border-radius: 12px;
+
+        content: "";
+    }
+}
+
+.companyItem {
+    margin-bottom: 12px;
+    padding: 5px;
+    background: rgba($color-white, 0.5);
+    border-radius: 3px;
+
+    &__title {
+        display: flex;
+        align-items: baseline;
+        gap: 3px;
+        margin-bottom: 5px;
+
+        .markText {
+            font-size: 15px;
+            font-weight: 500;
+        }
+    }
+
+    &__category {
+        font-size: 12px;
+        font-weight: 300;
+    }
+
+    &__row {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 4px;
+        font-size: 13px;
+    }
+
+    &__period {
+        font-size: 12px;
+        color: rgba($color-black, 0.7);
+    }
+
+    &__detail {
+        margin-top: 8px;
+        padding-top: 5px;
+        border-top: 1px dashed #000;
+        font-size: 13px;
+        li {
+            display: flex;
+            margin-top: 3px;
+            gap: 3px;
+            letter-spacing: -0.05em;
+
+            &::before {
+                content: "-";
+            }
+        }
+    }
+}
+
+.skillItem {
+    margin-bottom: 8px;
+
+    .markText {
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    &__detail {
+        margin-top: 3px;
+
+        li {
+            display: flex;
+            gap: 3px;
+            font-size: 13px;
+            line-height: 1.5;
+
+            &::before {
+                content: "-";
+            }
+        }
+    }
+}
