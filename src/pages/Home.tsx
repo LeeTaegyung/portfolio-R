@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import CareerList from "../components/CareerList/CareerList";
 import SkillList from "../components/SkillList/SkillList";
+import PortfolioList from "../components/PortfolioList/PortfolioList";
 
 const Home = () => {
     return (
@@ -38,32 +39,7 @@ const Home = () => {
             {/* portfolio */}
             <article className="portfolio">
                 <h2 className="section__title">portfolio</h2>
-                <div className="portfolio__area">
-                    <div className="portfolio__filter">
-                        <button>All</button>
-                        <button>퍼블리셔</button>
-                        <button>프론트엔드</button>
-                    </div>
-                    <button>클릭</button>
-                    <ul className="portfolio__list">
-                        <li>
-                            <Link to="/">
-                                <figure>
-                                    <img
-                                        src={undefined}
-                                        alt="게임24시 썸네일"
-                                    />
-                                </figure>
-                                <strong className="portfolio__name">
-                                    게임24시
-                                </strong>
-                                <span className="portfolio__position">
-                                    퍼블리셔
-                                </span>
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
+                <PortfolioList />
             </article>
         </main>
     );
