@@ -1,7 +1,6 @@
 const skillData = [
     {
         name: "HTML/CSS",
-        imgUrl: "",
         text: [
             "웹표준에 맞는 마크업 구현",
             "재사용을 고려한 디자인시스템 설계",
@@ -11,7 +10,6 @@ const skillData = [
     },
     {
         name: "Javascript",
-        imgUrl: "",
         text: [
             "요구 사항에 맞는 기능 개발",
             "기존 프로젝트 코드를 파악, 분석하고 유지보수",
@@ -19,37 +17,31 @@ const skillData = [
     },
     {
         name: "Git",
-        imgUrl: "",
         text: ["버전 관리를 통한 프로젝트 유지보수 경험"],
     },
     {
         name: "Animation",
-        imgUrl: "",
         text: [
             "스크롤, 차트 등 다양한 애니메이션 구현",
             "GSAP를 활용한 애니메이션 적용 가능",
         ],
     },
-    // {
-    // name: 'React',
-    //     imgUrl: "",
-    //     text: [""],
-    // },
+    {
+        name: "React",
+        text: ["포트폴리오 사이트, 리액트 적용 경험"],
+    },
     {
         name: "Typescript",
-        imgUrl: "",
-        text: ["사이드 프로젝트에 타입스크립트 적용 경험"],
+        text: ["포트폴리오 사이트, 타입스크립트 적용 경험"],
     },
     {
         name: "Photoshop",
-        imgUrl: "",
         text: [
             "기획서와 시안을 참고하여 설계한 대로 포토샵에서 원하는 이미지 추출",
         ],
     },
     {
         name: "Figma",
-        imgUrl: "",
         text: ["피그마를 통한 협업 경험"],
     },
 ];

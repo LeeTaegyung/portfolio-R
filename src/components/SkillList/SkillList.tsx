@@ -1,15 +1,7 @@
 import skillData from "../../data/skillData";
 import MarkText from "../MarkText/MarkText";
 
-const SkillItem = ({
-    name,
-    // imgUrl,
-    text,
-}: {
-    name: string;
-    // imgUrl: string;
-    text: string[];
-}) => {
+const SkillItem = ({ name, text }: { name: string; text: string[] }) => {
     return (
         <li className="skillItem">
             <MarkText text={name} />

@@ -102,7 +102,7 @@ $(window).on('scroll', function () {
                 detail: [
                     {
                         type: "IMG",
-                        imgUrl: "/images/portfolio_details/novita_detail.jpg",
+                        imgUrl: "/images/portfolio_details/novita_detail.png",
                         description: "설명3 dsfdsjfkldjkljdkjsflkjk",
                     },
                 ],
