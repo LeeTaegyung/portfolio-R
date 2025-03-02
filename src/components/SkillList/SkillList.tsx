@@ -3,11 +3,11 @@ import MarkText from "../MarkText/MarkText";
 
 const SkillItem = ({
     name,
-    imgUrl,
+    // imgUrl,
     text,
 }: {
     name: string;
-    imgUrl: string;
+    // imgUrl: string;
     text: string[];
 }) => {
     return (
