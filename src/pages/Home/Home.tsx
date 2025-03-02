@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import CareerList from "../components/CareerList/CareerList";
-import SkillList from "../components/SkillList/SkillList";
-import PortfolioList from "../components/PortfolioList/PortfolioList";
+import CareerList from "../../components/CareerList/CareerList";
+import SkillList from "../../components/SkillList/SkillList";
+import PortfolioList from "../../components/PortfolioList/PortfolioList";
 
 const Home = () => {
+    console.log("home");
     return (
         <main id="container" className="main">
             {/* about */}

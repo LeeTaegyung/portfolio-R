@@ -1,6 +1,15 @@
 import careerData from "../../data/careerData";
 import MarkText from "../MarkText/MarkText";
 
+type CareerItemType = {
+    name: string;
+    job: string;
+    category: string;
+    period: string;
+    position: string;
+    detail: string[];
+};
+
 const CareerItem = ({
     name,
     job,
@@ -8,14 +17,7 @@ const CareerItem = ({
     period,
     position,
     detail,
-}: {
-    name: string;
-    job: string;
-    category: string;
-    period: string;
-    position: string;
-    detail: string[];
-}) => {
+}: CareerItemType) => {
     return (
         <li className="companyItem">
             <h3 className="companyItem__title">

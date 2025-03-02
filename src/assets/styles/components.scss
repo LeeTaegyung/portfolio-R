@@ -98,3 +98,111 @@
         }
     }
 }
+
+.portfolio {
+    &__main {
+        .portfolioMain {
+            &__filter {
+                display: flex;
+                margin-bottom: 20px;
+                gap: 15px;
+
+                &-btn {
+                    display: block;
+                    min-width: 70px;
+                    padding: 5px 10px;
+                    border: 1px solid $color-black;
+                    font-size: 14px;
+                    border-radius: 3px;
+                    transition: all 0.15s ease;
+
+                    &.active,
+                    &:hover {
+                        border-color: $color-point;
+                        color: #fff;
+                        background-color: $color-point;
+                    }
+                }
+            }
+            &__listBox {
+                padding-bottom: 30px;
+                border-bottom: 1px dashed $color-black;
+                margin-bottom: 30px;
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+                    border-bottom: none;
+                }
+
+                &-company {
+                    display: inline-block;
+                    margin-bottom: 10px;
+                    padding: 2px 4px;
+                    font-size: 14px;
+                    font-weight: 300;
+                    background-color: rgba($color-gray, 0.5);
+                    background-color: #ddd;
+                    border-radius: 2px;
+                }
+
+                &-list {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 15px;
+                }
+            }
+        }
+    }
+}
+
+.portfolio__item {
+    a {
+        position: relative;
+        display: block;
+        padding-top: 113.314%;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+    &-images {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &-name {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 15px;
+        color: #fff;
+        text-align: center;
+        background: rgba($color-black, 0.7);
+    }
+
+    &-job {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        padding: 1px 2px;
+        font-size: 12px;
+        color: $color-blue;
+        background-color: $color-white;
+        border-radius: 2px;
+    }
+}
