@@ -15,7 +15,6 @@ const CareerItem = ({
     job,
     category,
     period,
-    position,
     detail,
 }: CareerItemType) => {
     return (

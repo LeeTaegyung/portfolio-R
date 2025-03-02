@@ -3,9 +3,8 @@ import SkillList from "../../components/SkillList/SkillList";
 import PortfolioList from "../../components/PortfolioList/PortfolioList";
 
 const Home = () => {
-    console.log("home");
     return (
-        <main id="container" className="main">
+        <main id="container" className="mainPage">
             {/* about */}
             <article className="about">
                 {/* profile */}
@@ -31,6 +30,7 @@ const Home = () => {
                     <h2 className="about__title">career</h2>
                     <CareerList />
                 </section>
+                {/* skill */}
                 <section className="skill__sec">
                     <h2 className="about__title">skill</h2>
                     <SkillList />

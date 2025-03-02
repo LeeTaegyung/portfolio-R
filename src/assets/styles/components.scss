@@ -104,7 +104,7 @@
         .portfolioMain {
             &__filter {
                 display: flex;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
                 gap: 10px;
 
                 &-btn {
@@ -112,7 +112,7 @@
                     min-width: 70px;
                     padding: 5px 10px;
                     border: 1px solid $color-black;
-                    font-size: 14px;
+                    font-size: 16px;
                     border-radius: 3px;
                     transition: all 0.15s ease;
 
@@ -137,12 +137,11 @@
 
                 &-company {
                     display: inline-block;
-                    margin-bottom: 10px;
+                    margin-bottom: 15px;
                     padding: 2px 4px;
-                    font-size: 14px;
+                    font-size: 16px;
                     font-weight: 300;
-                    background-color: rgba($color-gray, 0.5);
-                    background-color: #ddd;
+                    background-color: $color-gray;
                     border-radius: 2px;
                 }
 
@@ -197,8 +196,8 @@
 
     &-job {
         position: absolute;
-        top: 6px;
-        left: 6px;
+        top: 7px;
+        left: 7px;
         padding: 1px 2px;
         font-size: 12px;
         color: $color-blue;

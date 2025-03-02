@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
     return (
         <header id="header">
             <h1 className="logo">
-                <div className="word">
+                <Link to="/" className="word">
                     <span className="word__top">
                         <span className="letter first">t</span>
                         <span className="word__in">
@@ -15,8 +17,8 @@ const Header = () => {
                             <span className="letter">g</span>
                         </span>
                     </span>
-                    <span className="word__bottom">portfolio</span>
-                </div>
+                    {/* <span className="word__bottom">portfolio</span> */}
+                </Link>
             </h1>
         </header>
     );

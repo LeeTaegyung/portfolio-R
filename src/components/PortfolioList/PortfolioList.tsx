@@ -6,14 +6,11 @@ import { useCallback, useEffect, useState } from "react";
 
 const filterData: string[] = ["All", "퍼블리셔", "프론트엔드"];
 
-const PortfolioItem = ({
-    name,
-    job,
-    thumbnail,
-}: Pick<PortfolioItemType, "name" | "job" | "thumbnail">) => {
+const PortfolioItem = ({ data }: { data: PortfolioItemType }) => {
+    const { thumbnail, name, job } = data;
     return (
         <li className="portfolio__item">
-            <Link to="/detail">
+            <Link to={`/detail`} state={{ data: data }}>
                 <figure className="portfolio__item-images">
                     <img src={thumbnail} alt="게임24시 썸네일" />
                 </figure>
@@ -80,7 +77,10 @@ const PortfolioList = () => {
                                 )}
                                 <ul className="portfolioMain__listBox-list">
                                     {item.projects.map((item, index) => (
-                                        <PortfolioItem key={index} {...item} />
+                                        <PortfolioItem
+                                            key={index}
+                                            data={item}
+                                        />
                                     ))}
                                 </ul>
                             </div>

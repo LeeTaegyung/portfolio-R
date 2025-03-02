@@ -1,11 +1,28 @@
-type PortfolioDetailType = {
-    imgUrl: string;
+type DetailBase = {
+    subTitle?: string;
     description: string;
 };
+
+type CodeType = DetailBase & {
+    type: "CODE";
+    code: string;
+};
+
+type ImageType = DetailBase & {
+    type: "IMG";
+    imgUrl: string;
+};
+
+export type PortfolioDetailType = CodeType | ImageType;
 
 type ContributionType = {
     text: string;
     percent: number;
+};
+
+type Link = {
+    text: string;
+    url: string;
 };
 
 export type PortfolioItemType = {
@@ -13,6 +30,8 @@ export type PortfolioItemType = {
     date: string;
     job: string;
     contribution: ContributionType[];
+    links?: Link[];
+    skills?: string[];
     thumbnail: string;
     detail: PortfolioDetailType[];
 };
