@@ -12,7 +12,7 @@ const ErrorPage = () => {
                 <p className="errorPage__text">
                     ⚠️ {error instanceof Error && error.message}
                 </p>
-                <BackBtn />
+                <BackBtn isBack={false} text="메인으로 돌아가기" />
             </main>
             <Footer />
         </div>

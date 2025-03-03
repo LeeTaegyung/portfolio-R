@@ -1,10 +1,11 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaLink } from "react-icons/fa";
 import { PortfolioDetailType, PortfolioItemType } from "../../types/type";
 import ViewCode from "../../components/ViewCode/ViewCode";
 import MarkText from "../../components/MarkText/MarkText";
 import { useEffect } from "react";
 import portfolioData from "../../data/portfolioData";
+import BackBtn from "../../components/BackBtn/BackBtn";
 
 const DetailItem = ({ data }: { data: PortfolioDetailType }) => {
     const { subTitle, type, description } = data;
@@ -47,9 +48,7 @@ const Detail = () => {
     const findDetail = findDepth?.projects[Number(index)];
 
     useEffect(() => {
-        return () => {
-            window.scrollTo({ top: 0 });
-        };
+        window.scrollTo({ top: 0 });
     }, []);
 
     if (!findDepth || !findDetail) {
@@ -140,6 +139,8 @@ const Detail = () => {
                     {detail.map((cont, index) => (
                         <DetailItem data={cont} key={index} />
                     ))}
+
+                    <BackBtn text="다른 포트폴리오 보러 가기" />
                 </div>
             </div>
         </main>

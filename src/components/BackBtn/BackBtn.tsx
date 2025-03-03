@@ -1,26 +1,28 @@
 import { useNavigate } from "react-router-dom";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
-const BackBtn = () => {
+const BackBtn = ({
+    isBack = true,
+    text,
+}: {
+    isBack?: boolean;
+    text: string;
+}) => {
     const nav = useNavigate();
 
     const backHandleClick = () => {
-        nav("/", { replace: true });
+        nav("/", { replace: !isBack });
     };
 
     return (
         <button
-            style={{
-                borderWidth: "1px",
-                borderStyle: "solid",
-                borderColor: "black",
-                padding: "5px",
-                borderRadius: "3px",
-            }}
             onClick={() => {
                 backHandleClick();
             }}
+            className="backBtn"
         >
-            돌아가기
+            <IoMdArrowRoundBack />
+            <span>{text}</span>
         </button>
     );
 };

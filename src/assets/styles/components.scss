@@ -1,6 +1,27 @@
 @use "variables" as *;
 @use "mixins" as *;
 
+.backBtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    font-size: 17px;
+    border: 1px solid $color-black;
+    border-radius: 3px;
+    svg {
+        font-size: 30px;
+    }
+
+    @include responsive(mobile) {
+        font-size: 14px;
+        gap: 5px;
+        svg {
+            font-size: 20px;
+        }
+    }
+}
+
 .logo {
     &__text {
         display: inline-flex;
