@@ -22,6 +22,10 @@ const Intro = ({
 
         if (!introRef.current) return;
         introIO.observe(introRef.current);
+
+        return () => {
+            introIO.disconnect();
+        };
     }, [setIsIntro]);
 
     return (
