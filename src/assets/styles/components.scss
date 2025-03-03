@@ -1,5 +1,163 @@
 @use "variables" as *;
 
+.logo {
+    &__text {
+        display: inline-flex;
+        align-items: baseline;
+        font-weight: 700;
+        line-height: 1;
+        color: $color-white;
+        transform: skewX(-20deg);
+
+        .text {
+            &__letter {
+                display: block;
+                text-transform: uppercase;
+                font-size: 15px;
+
+                &.upper {
+                    font-size: 2.1em;
+                    letter-spacing: -0.14em;
+                }
+            }
+
+            &__in {
+                display: inline-flex;
+                position: relative;
+                transform: translateY(-2px);
+
+                @mixin logo-border($top: null, $bottom: null, $origin: null) {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: $top;
+                    bottom: $bottom;
+                    height: 1px;
+                    background: $color-white;
+                    transform-origin: $origin;
+                    border-radius: 1px;
+                    content: "";
+                }
+
+                &::before {
+                    @include logo-border($top: -1px, $origin: left center);
+                }
+
+                &::after {
+                    @include logo-border($bottom: -2px, $origin: right center);
+                }
+            }
+        }
+    }
+}
+
+.intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 5px 20px;
+    background-color: $color-point;
+    z-index: 11111;
+
+    animation: introFinalView 2s ease 3.2s forwards;
+
+    $bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &__textBox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(5.5, 5);
+
+        .logo {
+            &__text {
+                overflow: hidden;
+                padding-right: 5px;
+
+                .text {
+                    &__letter {
+                        opacity: 0;
+                        transform: translate(50%);
+
+                        @for $i from 1 through 7 {
+                            &:nth-child(#{$i}) {
+                                animation: introLetter
+                                    0.25s
+                                    $bounce
+                                    forwards
+                                    (0.3s * $i);
+                            }
+                        }
+
+                        &.upper {
+                            transform: translate(0, 150%);
+                            animation: introLetter 1s $bounce forwards;
+                        }
+                    }
+
+                    &__in {
+                        &::before,
+                        &::after {
+                            transform: scaleX(0);
+                            animation: introLine 0.5s ease 2.3s forwards;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__subText {
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1;
+        text-align: right;
+        color: $color-white;
+        opacity: 0;
+        transform: translate(10px, -3px) skewX(-50deg);
+        animation: introPortfolio 1s $bounce 2.7s forwards;
+    }
+
+    @keyframes introLetter {
+        40% {
+            opacity: 1;
+        }
+        80% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes introLine {
+        100% {
+            transform: scaleX(100%);
+        }
+    }
+
+    @keyframes introPortfolio {
+        30% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 1;
+            transform: translate(0px, -3px) skewX(-20deg);
+        }
+    }
+
+    @keyframes introFinalView {
+        100% {
+            transform: translateY(-101%);
+        }
+    }
+}
+
 .markText {
     position: relative;
 
