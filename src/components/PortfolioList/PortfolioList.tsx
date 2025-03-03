@@ -6,11 +6,19 @@ import { useCallback, useEffect, useState } from "react";
 
 const filterData: string[] = ["All", "퍼블리셔", "프론트엔드"];
 
-const PortfolioItem = ({ data }: { data: PortfolioItemType }) => {
+const PortfolioItem = ({
+    data,
+    index,
+    depth,
+}: {
+    data: PortfolioItemType;
+    index: number;
+    depth: string;
+}) => {
     const { thumbnail, name, job } = data;
     return (
         <li className="portfolio__item">
-            <Link to={`/detail`} state={{ data: data }}>
+            <Link to={`/detail/${encodeURI(depth)}/${index}`}>
                 <figure className="portfolio__item-images">
                     <img src={thumbnail} alt="게임24시 썸네일" />
                 </figure>
@@ -67,21 +75,28 @@ const PortfolioList = () => {
                     ))}
                 </ul>
                 <div className="portfolioMain__content">
-                    {filterPortfolio.map((item, index) => {
+                    {filterPortfolio.map((item, parentIndex) => {
                         return (
-                            <div className="portfolioMain__listBox" key={index}>
+                            <div
+                                className="portfolioMain__listBox"
+                                key={parentIndex}
+                            >
                                 {item.company && (
                                     <h3 className="portfolioMain__listBox-company">
                                         {item.company}
                                     </h3>
                                 )}
                                 <ul className="portfolioMain__listBox-list">
-                                    {item.projects.map((item, index) => (
-                                        <PortfolioItem
-                                            key={index}
-                                            data={item}
-                                        />
-                                    ))}
+                                    {item.projects.map(
+                                        (data, childrenIndex) => (
+                                            <PortfolioItem
+                                                key={childrenIndex}
+                                                data={data}
+                                                depth={item.company}
+                                                index={childrenIndex}
+                                            />
+                                        )
+                                    )}
                                 </ul>
                             </div>
                         );

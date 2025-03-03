@@ -150,6 +150,24 @@
         }
     }
 
+    .section {
+        padding: 50px 0;
+
+        &__title {
+            margin-bottom: 20px;
+            border-bottom: 2px solid $color-black;
+            font-size: 26px;
+            font-weight: 700;
+            font-style: italic;
+            text-transform: uppercase;
+
+            @include responsive(mobile) {
+                margin-bottom: 15px;
+                font-size: 20px;
+            }
+        }
+    }
+
     .portfolio {
         flex: 1;
         padding: $gap;
@@ -157,24 +175,6 @@
 
         @include responsive(mobile) {
             padding: 30px $gap 50px;
-        }
-    }
-}
-
-.section {
-    padding: 50px 0;
-
-    &__title {
-        margin-bottom: 20px;
-        border-bottom: 2px solid $color-black;
-        font-size: 26px;
-        font-weight: 700;
-        font-style: italic;
-        text-transform: uppercase;
-
-        @include responsive(mobile) {
-            margin-bottom: 15px;
-            font-size: 20px;
         }
     }
 }
@@ -372,4 +372,13 @@
             }
         }
     }
+}
+
+.errorPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 10px;
 }

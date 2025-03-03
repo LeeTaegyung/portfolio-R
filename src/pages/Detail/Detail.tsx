@@ -1,8 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaLink } from "react-icons/fa";
 import { PortfolioDetailType, PortfolioItemType } from "../../types/type";
 import ViewCode from "../../components/ViewCode/ViewCode";
 import MarkText from "../../components/MarkText/MarkText";
+import { useEffect } from "react";
+import portfolioData from "../../data/portfolioData";
 
 const DetailItem = ({ data }: { data: PortfolioDetailType }) => {
     const { subTitle, type, description } = data;
@@ -40,7 +42,20 @@ const DetailItem = ({ data }: { data: PortfolioDetailType }) => {
 };
 
 const Detail = () => {
-    const location = useLocation();
+    const { depth, index } = useParams();
+    const findDepth = portfolioData.find((el) => el.company === depth);
+    const findDetail = findDepth?.projects[Number(index)];
+
+    useEffect(() => {
+        return () => {
+            window.scrollTo({ top: 0 });
+        };
+    }, []);
+
+    if (!findDepth || !findDetail) {
+        throw Error("데이터를 찾을 수 없습니다.");
+    }
+
     const {
         name,
         date,
@@ -48,7 +63,7 @@ const Detail = () => {
         links,
         skills,
         detail,
-    }: PortfolioItemType = location.state.data;
+    }: PortfolioItemType = findDetail;
 
     return (
         <main id="container" className="detailPage">

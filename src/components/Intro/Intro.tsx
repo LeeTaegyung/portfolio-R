@@ -15,6 +15,7 @@ const Intro = ({
                 if (!entries[0].isIntersecting) {
                     document.body.style.overflow = "auto";
                     setIsIntro(false);
+                    sessionStorage.setItem("introSeen", "true");
                 }
             },
             { threshold: 0 }
