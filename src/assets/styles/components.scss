@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "mixins" as *;
 
 .logo {
     &__text {
@@ -8,15 +9,19 @@
         line-height: 1;
         color: $color-white;
         transform: skewX(-20deg);
+        font-size: 15px;
+
+        @include responsive(tablet) {
+            font-size: 13px;
+        }
 
         .text {
             &__letter {
                 display: block;
                 text-transform: uppercase;
-                font-size: 15px;
 
                 &.upper {
-                    font-size: 2.1em;
+                    font-size: 2.2em;
                     letter-spacing: -0.14em;
                 }
             }
@@ -40,11 +45,17 @@
                 }
 
                 &::before {
-                    @include logo-border($top: -1px, $origin: left center);
+                    @include logo-border($top: -2px, $origin: left center);
+                    @include responsive(tablet) {
+                        top: -2px;
+                    }
                 }
 
                 &::after {
                     @include logo-border($bottom: -2px, $origin: right center);
+                    @include responsive(tablet) {
+                        bottom: -1px;
+                    }
                 }
             }
         }
@@ -70,6 +81,14 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) scale(5.5, 5);
+
+        @include responsive(tablet) {
+            transform: translate(-50%, -50%) scale(4.5, 4);
+        }
+
+        @include responsive(tablet) {
+            transform: translate(-50%, -50%) scale(3, 2.5);
+        }
 
         .logo {
             &__text {
@@ -264,6 +283,11 @@
                 display: flex;
                 margin-bottom: 30px;
                 gap: 10px;
+                overflow-x: auto;
+
+                @include responsive(mobile) {
+                    margin-bottom: 15px;
+                }
 
                 &-btn {
                     display: block;
@@ -273,6 +297,16 @@
                     font-size: 16px;
                     border-radius: 3px;
                     transition: all 0.15s ease;
+
+                    @include responsive(tablet) {
+                        font-size: 14px;
+                    }
+
+                    @include responsive(mobile) {
+                        min-width: 50px;
+                        padding: 3px 6px;
+                        font-size: 14px;
+                    }
 
                     &.active,
                     &:hover {
@@ -286,6 +320,11 @@
                 padding-bottom: 30px;
                 border-bottom: 1px dashed $color-black;
                 margin-bottom: 30px;
+
+                @include responsive(mobile) {
+                    margin-bottom: 20px;
+                    padding-bottom: 20px;
+                }
 
                 &:last-of-type {
                     margin-bottom: 0;
@@ -301,12 +340,25 @@
                     font-weight: 300;
                     background-color: $color-gray;
                     border-radius: 2px;
+
+                    @include responsive(mobile) {
+                        margin-bottom: 10px;
+                        font-size: 14px;
+                    }
                 }
 
                 &-list {
                     display: grid;
                     grid-template-columns: repeat(4, 1fr);
                     gap: 15px;
+
+                    @include responsive(desktop) {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+
+                    @include responsive(tablet) {
+                        gap: 10px;
+                    }
                 }
             }
         }
@@ -350,6 +402,10 @@
         color: #fff;
         text-align: center;
         background: rgba($color-black, 0.7);
+
+        @include responsive(mobile) {
+            font-size: 13px;
+        }
     }
 
     &-job {
@@ -361,5 +417,9 @@
         color: $color-blue;
         background-color: $color-white;
         border-radius: 2px;
+
+        @include responsive(mobile) {
+            font-size: 11px;
+        }
     }
 }

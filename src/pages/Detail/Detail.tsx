@@ -83,11 +83,11 @@ const Detail = () => {
                             <dl className="project__infoData block">
                                 <dt>스킬</dt>
                                 <dd>
-                                    <div className="project__infoData-listList">
+                                    <div className="project__infoData-skillList">
                                         {skills.map((skill, index) => (
                                             <span
                                                 key={index}
-                                                className="project__infoData-skillItem"
+                                                className="skillList__skillItem"
                                             >
                                                 {skill}
                                             </span>
@@ -102,12 +102,12 @@ const Detail = () => {
                             <dl className="project__infoData block">
                                 <dt>링크</dt>
                                 <dd>
-                                    <div className="project__infoData-listList">
+                                    <div className="project__infoData-linkList">
                                         {links.map((link, index) => (
                                             <Link
                                                 key={index}
                                                 to={link.url}
-                                                className="project__infoData-linkItem"
+                                                className="linkList__linkItem"
                                                 target="_blank"
                                             >
                                                 <FaLink />
