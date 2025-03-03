@@ -9,7 +9,7 @@ type CodeType = DetailBase & {
 };
 
 type ImageType = DetailBase & {
-    type: "IMG";
+    type?: "IMG";
     imgUrl: string;
 };
 
@@ -37,6 +37,6 @@ export type PortfolioItemType = {
 };
 
 export type PortfolioListType = {
-    company: string | null;
+    company: string;
     projects: PortfolioItemType[];
 };

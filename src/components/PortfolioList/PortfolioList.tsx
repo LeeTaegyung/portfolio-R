@@ -81,11 +81,9 @@ const PortfolioList = () => {
                                 className="portfolioMain__listBox"
                                 key={parentIndex}
                             >
-                                {item.company && (
-                                    <h3 className="portfolioMain__listBox-company">
-                                        {item.company}
-                                    </h3>
-                                )}
+                                <h3 className="portfolioMain__listBox-company">
+                                    {item.company}
+                                </h3>
                                 <ul className="portfolioMain__listBox-list">
                                     {item.projects.map(
                                         (data, childrenIndex) => (
