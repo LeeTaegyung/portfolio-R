@@ -32,7 +32,7 @@
     }
 
     &.completed {
-        animation: loadingBlur 1s linear forwards;
+        animation: loadingBlur 1s linear forwards 0.3s;
     }
 
     @keyframes spinner {

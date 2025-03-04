@@ -152,8 +152,10 @@ const Detail = () => {
     useEffect(() => {
         window.scrollTo({ top: 0 });
 
-        if (ImagesRef.current?.querySelectorAll("img").length) {
-            ImagesRef.current?.querySelectorAll("img")[0].addEventListener(
+        // 이미지 로딩 완료 확인
+        const imagesAll = ImagesRef.current?.querySelectorAll("img");
+        if (imagesAll?.length) {
+            imagesAll[0].addEventListener(
                 "load",
                 () => {
                     setIsLoading(true);
