@@ -12,7 +12,6 @@ import MarkText from "../../components/MarkText/MarkText";
 import { useEffect, useRef, useState } from "react";
 import portfolioData from "../../data/portfolioData";
 import BackBtn from "../../components/BackBtn/BackBtn";
-import classNames from "classnames";
 import Loading from "../../components/Loading/Loading";
 
 const isCodeType = (data: PortfolioDetailType): data is CodeType =>
