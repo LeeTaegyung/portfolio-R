@@ -370,6 +370,9 @@
                 gap: 10px;
                 overflow-x: auto;
 
+                // 포트폴리오 필터 숨김
+                display: none;
+
                 @include responsive(mobile) {
                     margin-bottom: 15px;
                 }
@@ -506,6 +509,9 @@
         color: $color-blue;
         background-color: $color-white;
         border-radius: 2px;
+
+        // 직업부분 숨김
+        display: none;
 
         @include responsive(mobile) {
             font-size: 11px;
