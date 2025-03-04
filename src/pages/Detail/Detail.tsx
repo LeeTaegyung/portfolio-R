@@ -9,9 +9,11 @@ import {
 } from "../../types/type";
 import ViewCode from "../../components/ViewCode/ViewCode";
 import MarkText from "../../components/MarkText/MarkText";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import portfolioData from "../../data/portfolioData";
 import BackBtn from "../../components/BackBtn/BackBtn";
+import classNames from "classnames";
+import Loading from "../../components/Loading/Loading";
 
 const isCodeType = (data: PortfolioDetailType): data is CodeType =>
     data.detailType === "CODE";
@@ -143,11 +145,23 @@ const DetailItem = ({ data }: { data: PortfolioDetailType }) => {
 
 const Detail = () => {
     const { depth, index } = useParams();
+    const [isLoading, setIsLoading] = useState(false);
     const findDepth = portfolioData.find((el) => el.company === depth);
     const findDetail = findDepth?.projects[Number(index)];
+    const ImagesRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         window.scrollTo({ top: 0 });
+
+        if (ImagesRef.current?.querySelectorAll("img").length) {
+            ImagesRef.current?.querySelectorAll("img")[0].addEventListener(
+                "load",
+                () => {
+                    setIsLoading(true);
+                },
+                { once: true }
+            );
+        }
     }, []);
 
     if (!findDepth || !findDetail) {
@@ -166,101 +180,106 @@ const Detail = () => {
     }: PortfolioItemType = findDetail;
 
     return (
-        <main id="container" className="detailPage">
-            <div className="inner">
-                {/* detailPage__header */}
-                <div className="detailPage__header">
-                    {/* 프로젝트 이름 */}
-                    <h2 className="project__name">
-                        {<MarkText text={name} />}
-                    </h2>
-                    <div className="project__info">
-                        {/* 기간 */}
-                        <dl className="project__infoData">
-                            <dt>기간</dt>
-                            <dd>{date}</dd>
-                        </dl>
-
-                        {/* 기여도 */}
-                        {contribution && (
+        <>
+            {ImagesRef.current?.querySelectorAll("img").length && (
+                <Loading isLoading={isLoading} />
+            )}
+            <main id="container" className="detailPage" ref={ImagesRef}>
+                <div className="inner">
+                    {/* detailPage__header */}
+                    <div className="detailPage__header">
+                        {/* 프로젝트 이름 */}
+                        <h2 className="project__name">
+                            {<MarkText text={name} />}
+                        </h2>
+                        <div className="project__info">
+                            {/* 기간 */}
                             <dl className="project__infoData">
-                                <dt>기여도</dt>
-                                <dd>
-                                    {contribution.map((text, index) => (
-                                        <span key={index}>
-                                            {text.text} {text.percent + "%"}
-                                        </span>
-                                    ))}
-                                </dd>
+                                <dt>기간</dt>
+                                <dd>{date}</dd>
                             </dl>
-                        )}
 
-                        {projectType && (
-                            <dl className="project__infoData">
-                                <dt>타입</dt>
-                                <dd>{projectType}</dd>
-                            </dl>
-                        )}
-
-                        {/* 스킬 */}
-                        {skills && (
-                            <dl className="project__infoData block">
-                                <dt>스킬</dt>
-                                <dd>
-                                    <div className="project__infoData-skillList">
-                                        {skills.map((skill, index) => (
-                                            <span
-                                                key={index}
-                                                className="skillList__skillItem"
-                                            >
-                                                {skill}
+                            {/* 기여도 */}
+                            {contribution && (
+                                <dl className="project__infoData">
+                                    <dt>기여도</dt>
+                                    <dd>
+                                        {contribution.map((text, index) => (
+                                            <span key={index}>
+                                                {text.text} {text.percent + "%"}
                                             </span>
                                         ))}
-                                    </div>
-                                </dd>
-                            </dl>
-                        )}
+                                    </dd>
+                                </dl>
+                            )}
 
-                        {/* 링크 */}
-                        {links && (
-                            <dl className="project__infoData block">
-                                <dt>링크</dt>
-                                <dd>
-                                    <div className="project__infoData-linkList">
-                                        {links.map((link, index) => (
-                                            <Link
-                                                key={index}
-                                                to={link.url}
-                                                className="linkItem"
-                                                target="_blank"
-                                            >
-                                                <FaLink />
-                                                {link.text}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </dd>
-                            </dl>
-                        )}
+                            {projectType && (
+                                <dl className="project__infoData">
+                                    <dt>타입</dt>
+                                    <dd>{projectType}</dd>
+                                </dl>
+                            )}
 
-                        {/* mainDesc */}
-                        {mainDesc && (
-                            <div className="project__infoData block">
-                                <DetailDescList list={mainDesc} />
-                            </div>
-                        )}
+                            {/* 스킬 */}
+                            {skills && (
+                                <dl className="project__infoData block">
+                                    <dt>스킬</dt>
+                                    <dd>
+                                        <div className="project__infoData-skillList">
+                                            {skills.map((skill, index) => (
+                                                <span
+                                                    key={index}
+                                                    className="skillList__skillItem"
+                                                >
+                                                    {skill}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </dd>
+                                </dl>
+                            )}
+
+                            {/* 링크 */}
+                            {links && (
+                                <dl className="project__infoData block">
+                                    <dt>링크</dt>
+                                    <dd>
+                                        <div className="project__infoData-linkList">
+                                            {links.map((link, index) => (
+                                                <Link
+                                                    key={index}
+                                                    to={link.url}
+                                                    className="linkItem"
+                                                    target="_blank"
+                                                >
+                                                    <FaLink />
+                                                    {link.text}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </dd>
+                                </dl>
+                            )}
+
+                            {/* mainDesc */}
+                            {mainDesc && (
+                                <div className="project__infoData block">
+                                    <DetailDescList list={mainDesc} />
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    {/* detailPage__body */}
+                    <div className="detailPage__body">
+                        {details.map((data, index) => (
+                            <DetailItem data={data} key={index} />
+                        ))}
+
+                        <BackBtn text="다른 포트폴리오 보러 가기" />
                     </div>
                 </div>
-                {/* detailPage__body */}
-                <div className="detailPage__body">
-                    {details.map((data, index) => (
-                        <DetailItem data={data} key={index} />
-                    ))}
-
-                    <BackBtn text="다른 포트폴리오 보러 가기" />
-                </div>
-            </div>
-        </main>
+            </main>
+        </>
     );
 };
 
