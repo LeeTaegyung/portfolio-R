@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaLink } from "react-icons/fa";
 import { PortfolioDetailType, PortfolioItemType } from "../../types/type";
 import ViewCode from "../../components/ViewCode/ViewCode";
