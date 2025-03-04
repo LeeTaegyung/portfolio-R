@@ -160,6 +160,8 @@ const Detail = () => {
                 },
                 { once: true }
             );
+        } else {
+            setIsLoading(true);
         }
     }, []);
 
@@ -180,9 +182,7 @@ const Detail = () => {
 
     return (
         <>
-            {ImagesRef.current?.querySelectorAll("img").length && (
-                <Loading isLoading={isLoading} />
-            )}
+            <Loading isLoading={isLoading} />
             <main id="container" className="detailPage" ref={ImagesRef}>
                 <div className="inner">
                     {/* detailPage__header */}
