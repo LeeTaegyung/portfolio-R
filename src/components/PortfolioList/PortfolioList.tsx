@@ -49,6 +49,10 @@ const PortfolioList = () => {
         });
     }, [filter]);
 
+    const isPortfolio = useCallback(() => {
+        return filterPortfolio.every((item) => item.projects.length > 0);
+    }, [filterPortfolio]);
+
     useEffect(() => {
         const data = getFilterPortfolio();
         setFilterPortfolio(data);
@@ -75,30 +79,36 @@ const PortfolioList = () => {
                     ))}
                 </ul>
                 <div className="portfolioMain__content">
-                    {filterPortfolio.map((item, parentIndex) => {
-                        return (
-                            <div
-                                className="portfolioMain__listBox"
-                                key={parentIndex}
-                            >
-                                <h3 className="portfolioMain__listBox-company">
-                                    {item.company}
-                                </h3>
-                                <ul className="portfolioMain__listBox-list">
-                                    {item.projects.map(
-                                        (data, childrenIndex) => (
-                                            <PortfolioItem
-                                                key={childrenIndex}
-                                                data={data}
-                                                depth={item.company}
-                                                index={childrenIndex}
-                                            />
-                                        )
-                                    )}
-                                </ul>
-                            </div>
-                        );
-                    })}
+                    {isPortfolio() ? (
+                        filterPortfolio.map((item, parentIndex) => {
+                            return (
+                                <div
+                                    className="portfolioMain__listBox"
+                                    key={parentIndex}
+                                >
+                                    <h3 className="portfolioMain__listBox-company">
+                                        {item.company}
+                                    </h3>
+                                    <ul className="portfolioMain__listBox-list">
+                                        {item.projects.map(
+                                            (data, childrenIndex) => (
+                                                <PortfolioItem
+                                                    key={childrenIndex}
+                                                    data={data}
+                                                    depth={item.company}
+                                                    index={childrenIndex}
+                                                />
+                                            )
+                                        )}
+                                    </ul>
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <div className="portfolioMain__noData">
+                            데이터가 없습니다.
+                        </div>
+                    )}
                 </div>
             </div>
         </>
