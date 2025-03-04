@@ -1,19 +1,27 @@
 type DetailBase = {
     subTitle?: string;
-    description: string;
+    subLink?: Link;
 };
 
-type CodeType = DetailBase & {
-    type: "CODE";
+export type OnlyImagesType = DetailBase & {
+    detailType: "IMG";
+    imgUrls: string[];
+};
+
+export type CodeType = DetailBase & {
+    detailType: "CODE";
     code: string;
+    text: string[];
 };
 
-type ImageType = DetailBase & {
-    type?: "IMG";
-    imgUrl: string;
+export type ImageDescType = DetailBase & {
+    detailType: "DESC";
+    img: string;
+    imgSize?: "long";
+    text: string[];
 };
 
-export type PortfolioDetailType = CodeType | ImageType;
+export type PortfolioDetailType = CodeType | ImageDescType | OnlyImagesType;
 
 type ContributionType = {
     text: string;
@@ -27,13 +35,15 @@ type Link = {
 
 export type PortfolioItemType = {
     name: string;
-    date: string;
+    thumbnail: string;
     job: string;
-    contribution: ContributionType[];
+    date: string;
+    contribution?: ContributionType[];
+    projectType?: string;
     links?: Link[];
     skills?: string[];
-    thumbnail: string;
-    detail: PortfolioDetailType[];
+    mainDesc?: string[];
+    details: PortfolioDetailType[];
 };
 
 export type PortfolioListType = {
