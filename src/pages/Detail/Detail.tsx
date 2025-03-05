@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { FaLink } from "react-icons/fa";
 import {
     CodeType,
@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from "react";
 import portfolioData from "../../data/portfolioData";
 import BackBtn from "../../components/BackBtn/BackBtn";
 import Loading from "../../components/Loading/Loading";
+import classNames from "classnames";
 
 const isCodeType = (data: PortfolioDetailType): data is CodeType =>
     data.detailType === "CODE";
@@ -32,7 +33,7 @@ const DetailContent = ({ data }: { data: PortfolioDetailType }) => {
                     </div>
                 </div>
                 <div className="project__detail-bottom">
-                    {<DetailDescList list={data.text} />}
+                    <DetailDescList list={data.text} />
                     {data.subLink && (
                         <Link
                             to={data.subLink.url}
@@ -55,7 +56,7 @@ const DetailContent = ({ data }: { data: PortfolioDetailType }) => {
             return (
                 <>
                     <div className="project__detail-top">
-                        {<DetailDescList list={data.text} />}
+                        <DetailDescList list={data.text} />
                         {data.subLink && (
                             <Link
                                 to={data.subLink.url}
@@ -83,7 +84,7 @@ const DetailContent = ({ data }: { data: PortfolioDetailType }) => {
                     </figure>
                 </div>
                 <div className="project__detail-bottom">
-                    {<DetailDescList list={data.text} />}
+                    <DetailDescList list={data.text} />
                     {data.subLink && (
                         <Link
                             to={data.subLink.url}
@@ -143,28 +144,31 @@ const DetailItem = ({ data }: { data: PortfolioDetailType }) => {
 };
 
 const Detail = () => {
-    const { depth, index } = useParams();
     const [isLoading, setIsLoading] = useState(false);
+    const { depth, index } = useParams();
     const findDepth = portfolioData.find((el) => el.company === depth);
     const findDetail = findDepth?.projects[Number(index)];
-    const ImagesRef = useRef<HTMLElement>(null);
+    const ImagesRef = useRef<HTMLElement | null>(null);
+    const location = useLocation();
 
     useEffect(() => {
         window.scrollTo({ top: 0 });
+    }, [location.pathname]);
 
-        // 이미지 로딩 완료 확인
-        const imagesAll = ImagesRef.current?.querySelectorAll("img");
-        if (imagesAll?.length) {
-            imagesAll[0].addEventListener(
-                "load",
-                () => {
+    useEffect(() => {
+        const imagesAll = ImagesRef.current?.querySelectorAll(
+            ".project__detail-image img"
+        );
+
+        let loadedCount = 0;
+        imagesAll?.forEach((img) => {
+            img.addEventListener("load", () => {
+                loadedCount++;
+                if (loadedCount === imagesAll.length) {
                     setIsLoading(true);
-                },
-                { once: true }
-            );
-        } else {
-            setIsLoading(true);
-        }
+                }
+            });
+        });
     }, []);
 
     if (!findDepth || !findDetail) {
@@ -181,11 +185,14 @@ const Detail = () => {
         mainDesc,
         details,
     }: PortfolioItemType = findDetail;
-
     return (
         <>
-            <Loading isLoading={isLoading} />
-            <main id="container" className="detailPage" ref={ImagesRef}>
+            {!isLoading && <Loading />}
+            <main
+                id="container"
+                className={classNames("detailPage", { visible: isLoading })}
+                ref={ImagesRef}
+            >
                 <div className="inner">
                     {/* detailPage__header */}
                     <div className="detailPage__header">

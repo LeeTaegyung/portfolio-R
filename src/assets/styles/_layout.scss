@@ -181,9 +181,17 @@
 
 .detailPage {
     padding: 50px 0;
+    opacity: 0;
+    visibility: hidden;
 
     @include responsive(tablet) {
         padding: 30px 0 50px;
+    }
+
+    &.visible {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 1s ease-in-out;
     }
 
     .backBtn {

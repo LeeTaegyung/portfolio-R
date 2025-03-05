@@ -1,8 +1,8 @@
 import classNames from "classnames";
 
-const Loading = ({ isLoading }: { isLoading: boolean }) => {
+const Loading = () => {
     return (
-        <div className={classNames("loading", { completed: isLoading })}>
+        <div className={classNames("loading")}>
             <div className="loading__in">
                 <div className="loading__spinner"></div>
             </div>
