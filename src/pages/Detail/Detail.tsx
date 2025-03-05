@@ -176,7 +176,7 @@ const Detail = () => {
     }, []);
 
     if (!findDepth || !findDetail) {
-        throw Error("데이터를 찾을 수 없습니다.");
+        throw new Error("데이터를 찾을 수 없습니다.");
     }
 
     const {
