@@ -161,14 +161,18 @@ const Detail = () => {
         );
 
         let loadedCount = 0;
-        imagesAll?.forEach((img) => {
-            img.addEventListener("load", () => {
-                loadedCount++;
-                if (loadedCount === imagesAll.length) {
-                    setIsLoading(true);
-                }
+        if (imagesAll?.length) {
+            imagesAll?.forEach((img) => {
+                img.addEventListener("load", () => {
+                    loadedCount++;
+                    if (loadedCount === imagesAll.length) {
+                        setIsLoading(true);
+                    }
+                });
             });
-        });
+        } else {
+            setIsLoading(true);
+        }
     }, []);
 
     if (!findDepth || !findDetail) {
