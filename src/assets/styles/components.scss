@@ -469,6 +469,10 @@
             &:hover {
                 filter: grayscale(0);
             }
+
+            @include responsive(tablet) {
+                filter: grayscale(0);
+            }
         }
     }
 
@@ -496,7 +500,7 @@
         border-radius: 2px;
 
         // 직업부분 숨김
-        // display: none;
+        display: none;
 
         @include responsive(mobile) {
             font-size: 11px;
